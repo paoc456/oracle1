@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>where will you go?</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* STYLE FOR THE INPUT FIELD */
+        #charInput {
+            margin: 0 auto;
+            display: block;
+            position: relative;
+        }
+
+        /* STYLE FOR THE SUBMIT BUTTON */
+        #submitButton {
+            margin: 0 auto;
+            display: block;
+            position: relative;
+        }
+
+        /* STYLE FOR THE IMAGE */
+        #displayedImage {
+            display: flex;
+            margin-top: 120px;
+            height: 500px;
+            width: auto;
+
+            /* This line is mandatory */
+        }
+    </style>
+</head>
+
+<body>
+    <p>where will you go?</p>
+
+    <!-- IMAGE TO DISPLAY -->
+    <img id="displayedImage" class="image" src="">
+
+    <br /> <br /> <br /> <br /> <br />
+
+    <!-- INPUT FIELD FOR 1 CHARACTER -->
+    <input type="text" class="field" id="charInput" maxlength="1">
+
+    <br />
+
+    <!-- BUTTON TO DISPLAY IMAGE -->
+    <button onclick="displayImage()" class="generate" id="submitButton">generate destination</button>
+
+
+    <!-- Image Display Script Below -->
+    <script>
+        // Array of images
+        // DIRECTIONS: UPDATE THE URLS WITH THE RELATIVE LINKS OF YOUR IMAGES
+        const images = [
+            "images/aberdeen.png",//A
+            "images/bonham.png", //B
+            "images/chatham.png", //C
+            "images/dundas.png", //D
+            "images/elgin.png", //E
+            "images/fleming.png", //F
+            "images/gloucester.png", //G
+            "images/hollywood.png", //H
+            "images/island.png", //I
+            "images/java.png", //J
+            "images/kings.png", //K
+            "images/lockhart.png", //L
+            "images/mody.png", //M
+            "images/nathan.png", //N
+            "images/oldbailey.png", //O
+            "images/pedder.png", //P
+            "images/queen.png", //Q
+            "images/russell.png", //R
+            "images/stanley.png", //S
+            "images/temple.png", //T
+            "images/ulam.png", //U
+            "images/victoria.png", //V
+            "images/wellington.png", //W
+            "images/xavier.png", //X
+            "images/yuenlong.png", //Y
+            "images/zetland.png"  //Z
+        ];
+
+        function displayImage() {
+            const input = document.getElementById("charInput").value.toUpperCase();
+            const imgElement = document.getElementById("displayedImage");
+
+            // Assign an image based on character (A-Z)
+            const index = input.charCodeAt(0) - 65; // 'A' is 65 in ASCII
+            if (index >= 0 && index < images.length) {
+                imgElement.src = images[index];
+                imgElement.style.display = "block";
+            } else {
+                /* 
+                alert("Please enter a letter between A and Z.");
+                imgElement.style.display = "none";
+                */
+
+                // IF INVALID INPUT IS ENTERED, DISPLAY ALTERNATE IMAGE
+                imgElement.src = "images/error.png"
+                imgElement.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
